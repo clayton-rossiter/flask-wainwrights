@@ -57,19 +57,19 @@ The first of the links only returns a single element of the fells and is sorted 
 ### 4.2 BASE_URL/fells/
 The ```fells``` endpoint includes further capability, including returning multiple fells from name, height (in metres) and/or location.  
 
-#### 3.2.1 By Name
+#### 4.2.1 By Name
 The API accepts a singular name or multiple names (not case sensitive) and will also return partial name matches.  For example, searching 'scafell' will return 'Scafell Pike' and 'Scafell'.  An example URL for multiple names is as follows:
 ```html
 http://127.0.0.1:5000/fells/?name=scafell&name=skiddaw
 ```
 
-#### 3.2.2 By Height (In Metres)
+#### 4.2.2 By Height (In Metres)
 It is also possible to search by height, such that the API will return all fells above or below a specified height.  An example URL for searching for all fells between 400m and 600m is as follows:
 ```html
 http://127.0.0.1:5000/fells/?above=400&below=600
 ```
 
-#### 3.2.3 By Location
+#### 4.2.3 By Location
 There are two ways to search by location:
 1. OS Grid Reference (gridref)
 or
@@ -103,7 +103,7 @@ The headers for the returned json also includes a 'Nearest' header.  An example 
 }
 ```
 
-It is worth noting the extra "Nearest" heading here that dictates the distance in kilometres from the location specified.
+It is worth noting the extra "Nearest" heading here details the distance in kilometres from the location specified.
 
 ## 5. Testing
 All the tests are contained with the "tests" folder and are primarily based off the ```framework.py``` file to ensure consistency across the tests.  To run the tests, run the command below:

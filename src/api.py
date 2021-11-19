@@ -1,4 +1,5 @@
 from pathlib import Path
+import os
 from typing import List
 import json
 
@@ -15,8 +16,10 @@ api = Api(app)
 
 
 # download raw data
-filepath = Path("/Users/claytonrossiter/Python/wainwright/wainwrights.csv")
-df = pd.read_csv('wainwrights.csv', encoding='utf-8')
+# filepath = Path("/Users/claytonrossiter/Python/wainwright/wainwrights.csv")
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+filepath = os.path.join(BASE_DIR, 'wainwrights.csv')
+df = pd.read_csv(filepath, encoding='utf-8')
 
 
 # Authentication Checks

@@ -23,16 +23,14 @@ df = pd.read_csv('wainwrights.csv', encoding='utf-8')
 def abort_if_fell_does_not_exist(id:int):
     """simple check to see if Fell id exists within dataframe index range"""
     if not id in df.index:
-        abort(404, message="Fell ID is not valid")
+        abort(404, "Fell ID is not valid")
 
 def abort_if_not_a_number(text: List[str]):
     """check to see if the argument passed into text can be converted into a number"""
-    if text is []:
-        abort(404, message="Parameter is empty!")
     try:
         text = [float(t) for t in text]
     except:
-        abort(404, message="Parameter is not a number")
+        abort(404, "Parameter is not a number")
         
 
 
@@ -89,7 +87,3 @@ class Fells(Resource):
 # configure api links
 api.add_resource(Fell, "/fell/<int:id>")
 api.add_resource(Fells, "/fells/")
-
-
-if __name__ == '__main__':
-    app.run(debug=True)

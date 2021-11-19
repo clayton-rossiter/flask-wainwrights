@@ -2,6 +2,7 @@ import json
 from requests.models import Response
 import unittest
 
+from src.api import app
 
 import pandas as pd
 from pandas.core.frame import DataFrame
@@ -18,6 +19,9 @@ class Framework(unittest.TestCase):
         self.grid_reference = 'NY369112'    # Hart Crag
         self.longitude = '-3.1485069114'    # Skiddaw
         self.latitude = '54.6506509377'     # Skiddaw
+
+        app.config['TESTING'] = True
+        self.app = app.test_client()
         
 
     def generate_query(self, **kwargs) -> str:
@@ -33,6 +37,6 @@ class Framework(unittest.TestCase):
 
     def convert_request_to_df(self, r: Response) -> DataFrame:
         """takes response from requests and converts to dataframe"""
-        raw_json = r.json()
+        raw_json = json.loads(r.get_data())
         dumps = json.dumps(raw_json)
         return pd.read_json(dumps)
